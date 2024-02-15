@@ -1,5 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+// import Counter from './components/counter';
+import Show from './components/visible';
+import Timer from './components/timer';
+import RefExample from './components/focus';
+import MessagesList from './components/list';
+
+
 
 function App() {
   const userName = 'Anna';
@@ -9,8 +16,15 @@ function App() {
       {/* <Heading />
       <Heading />
       <NewComp /> */}
-      <Article number="3" name="Info" />
-      <Article number="5" name="Blog" />
+      {/* <Article number="3" name="Info" />
+      <Article number="5" name="Blog" /> */}
+      {/* <Counter /> */}
+      <Timer />
+      <Show data="Текст из компонента" />
+      <Show data="Другой текст" />
+      <RefExample />
+      <MessagesList />
+
     </div>
   );
 }
@@ -19,8 +33,8 @@ function Article({ name, number }) {
   let themeSiteWhiite = true;
   return (
     <div>
-      <h2 style={{ color: themeSiteWhiite ? 'green' : 'red' }} className='heading'>Статья про {name} номер{number}</h2>
-      <a href="#">Читать статью.</a>
+      {/* <h2 style={{ color: themeSiteWhiite ? 'green' : 'red' }} className='heading'>Статья про {name} номер{number}</h2>
+      <a href="#">Читать статью.</a> */}
     </div>
   );
 }

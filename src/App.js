@@ -5,6 +5,12 @@ import Show from './components/visible';
 import Timer from './components/timer';
 import RefExample from './components/focus';
 import MessagesList from './components/list';
+import ParentCounter from './components/parent';
+import InputForm from './components/form';
+import Nav from './components/menu';
+import HoverRating from './components/rating';
+import BasicList from './components/listSuper';
+import Student from './components/propType';
 
 
 
@@ -13,6 +19,12 @@ function App() {
   return (
     <div className="App">
       <h1>Hello {userName}</h1>
+      <Student name='Anna' age={30} isStudent={true}/>
+      <HoverRating />
+      <Nav />
+      <ParentCounter />
+      <InputForm />
+      <BasicList />
       {/* <Heading />
       <Heading />
       <NewComp /> */}

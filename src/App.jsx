@@ -11,16 +11,62 @@ import Nav from './components/menu';
 import HoverRating from './components/rating';
 import BasicList from './components/listSuper';
 import Student from './components/propType';
-import React, { useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import ArticleList from './components/ArticleList';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ArticleDetail from './components/ArticleDetail';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 
+// //как было раньше с пропс
+// function GrandParent() {
+//   return <Parent message="hello from the top!" />
+// };
+// function Parent(props) {
+//   return <Child message={props.message} />
+// }
+// function Child(props) {
+//   return <GrandChild message={props.message} />;
+// }
+// // ...
+// function GrandGrandGrandChild(props) {
+//   return <span>{props.message}</span>;
+// }
+// //создаем контекст
+// const MessageContext = createContext();
+// //компонент GrandGrandGrandChild использует контекст
+// function GrandParent() {
+//   //используем useContext для доступа к контексту
+//   const message = useContext(MessageContext);
+//   return <span>{message}</span>
+// }
+// //компонент GrandParent устанавливает контекст
+// function GrandParent() {
+//   return (
+//     <MessageContext.Provider value="hello from the top Context!"><Parent /></MessageContext.Provider>
+//   );
+// }
+// //компонент Parent передает контекст через пропсы
+// function Parent() {
+//   return <Child />;
+// }
+// //компонент Child передает контекст дальше
+// function Child() {
+//   return <GrandChild />;
+// }
+// //компонент GrandChild передает контекст на последний уровень
+// function GrandChild() {
+//   return<GrandGrandGrandChild />;
+// }
+
+// ///////
+// ///Корневой компонент
+
+
 
 
 function App() {
+
   const articles = [
     { id: 1, title: 'Статья 1', content: 'содержимое статьи 1' },
     { id: 2, title: 'Статья 2', content: 'содержимое статьи 2' },
@@ -33,8 +79,42 @@ function App() {
     { id: 4, name: "Товар 4", description: "описание товара 4", price: "400 руб." },
   ];
   const userName = 'Anna';
+  //создаем контекст
+  const ThemeContext = createContext();
+  //компонент, использующий контекст
+  const ThemeButton = () => {
+    //используем useContext для доступа к контексту
+    const theme = useContext(ThemeContext);
+  }
+  //компонент который устанавливает контекст
+  const App = () => {
+    //определяем состояние которое будет передаваться через контекст
+    const [theme, setTheme] = useState({
+      background: 'lightgray',
+      foreground: 'black'
+    });
+    //оборачиваем компоненты которы должны испольховать контекст, в провайдер контекста
+    return (
+      <ThemeContext.Provider value={theme}>
+        <div>
+          <h1> использования React.Context</h1>
+          <ThemeButton />
+          <button onClick={() =>
+            setTheme({
+              background: 'black',
+              foreground: 'white'
+            })
+          }>Сменить тему</button>
+        </div>
+      </ThemeContext.Provider>
+    )
+  };
   return (
+
     <>
+      {/* <button style={{ background: theme.background, color: theme.foeground }}>Themed Button</button> */}
+      {/* <h1>пример использования React.Context</h1>
+    <GrandParent /> */}
       <BrowserRouter>
         <div>
           <h1>приложение для просмотра статей</h1>

@@ -13,42 +13,42 @@ import BasicList from './components/listSuper';
 import Student from './components/propType';
 import React, { useState } from 'react';
 import ArticleList from './components/ArticleList';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ArticleDetail from './components/ArticleDetail';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 
-const articles = [
-  { id: 1, title: 'Статья 1', content: 'содержимое статьи 1' },
-  { id: 2, title: 'Статья 2', content: 'содержимое статьи 2' },
-  { id: 3, title: 'Статья 3', content: 'содержимое статьи 3' },
-];
-const products = [
-  { id: 1, name: "Товар 1", description: "описание товара 1", price: "100 руб." },
-  { id: 2, name: "Товар 2", description: "описание товара 2", price: "200 руб." },
-  { id: 3, name: "Товар 3", description: "описание товара 3", price: "300 руб." },
-  { id: 4, name: "Товар 4", description: "описание товара 4", price: "400 руб." },
-];
+
 
 function App() {
-  <Router>
-    <div>
-      <h1>приложение для просмотра статей</h1>
-      <Routes>
-        {/*<Route path="/" element={<ArticleList articles={articles}/>}/> */}
-        <Route path="articles/:id" element={<ArticleDetail articles={articles} />} />
-        <Route path="*" element={<ArticleList articles={articles} />} />
-        <Route path='/page/:pageNumber'element={<ProductList products={products}/>}/>
-        <Route path='/product/:product'element={<ProductDetail products={products}/>}/>
-        <Route path='/'element={<ProductList products={products}/>}/>
-
-      </Routes>
-    </div>
-  </Router>
-
+  const articles = [
+    { id: 1, title: 'Статья 1', content: 'содержимое статьи 1' },
+    { id: 2, title: 'Статья 2', content: 'содержимое статьи 2' },
+    { id: 3, title: 'Статья 3', content: 'содержимое статьи 3' },
+  ];
+  const products = [
+    { id: 1, name: "Товар 1", description: "описание товара 1", price: "100 руб." },
+    { id: 2, name: "Товар 2", description: "описание товара 2", price: "200 руб." },
+    { id: 3, name: "Товар 3", description: "описание товара 3", price: "300 руб." },
+    { id: 4, name: "Товар 4", description: "описание товара 4", price: "400 руб." },
+  ];
   const userName = 'Anna';
   return (
     <>
+      <BrowserRouter>
+        <div>
+          <h1>приложение для просмотра статей</h1>
+          <Routes>
+            {/*<Route path="/" element={<ArticleList articles={articles}/>}/> */}
+            <Route path="articles/:id" element={<ArticleDetail articles={articles} />} />
+            <Route path="*" element={<ArticleList articles={articles} />} />
+            <Route path='/page/:pageNumber' element={<ProductList products={products} />} />
+            <Route path='/product/:product' element={<ProductDetail products={products} />} />
+            <Route path='/' element={<ProductList products={products} />} />
+
+          </Routes>
+        </div>
+      </BrowserRouter>
       <div className="App">
         {
           console.log(

@@ -7,9 +7,9 @@ const ProductDetail = ({ products }) => {
 
     return (
         <div>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
+            <h2>{products.name}</h2>
+            <p>{products.description}</p>
+            <p>{products.price}</p>
         </div>
     )
 }
